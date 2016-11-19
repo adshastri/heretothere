@@ -1,0 +1,8 @@
+DirectionsIntent How do I get from {Place} to {Place}
+DirectionsIntent How can I get from {Place} to {Place}
+DirectionsIntent How long does it take from {Place} to {Place}
+DirectionsIntent How long does it take to get from {Place} to {Place}
+DirectionsIntent How to get from {Place} to {Place}
+DirectionsIntent How can someone get from {Place} to {Place}
+DirectionsIntent How can you get from {Place} to {Place}
+DirectionsIntent How can someone get from {Place} to {Place}
