@@ -51,7 +51,9 @@ body {
   font-size: 21px;
 }
 
-
+#subbutton {
+ background-color: #CA0A37;
+}
 
 /* Supporting marketing content */
 .marketing {
@@ -78,12 +80,6 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
-}
-#buttlol {
-  width: 120px;
-  border-radius: 10px;
-  cursor: hand;
-  cursor: pointer;
 }
 
 .textbox{
