@@ -8,8 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.ParserConfigurationException;
 
-import echo.busChecker.Btime;
+import org.xml.sax.SAXException;
+
+import echo.*;
+import echo.busChecker.*;
 
 /**
  * Servlet implementation class BusServlet
@@ -39,20 +43,45 @@ public class BusServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String output = request.getHeader("stops");
-		System.out.println(output);
-		String[] abc = {output.substring(0, output.indexOf(':')), output.substring(output.indexOf(':')+1, output.length())};
-		String q = "";
+		String one = request.getParameter("origin");
+		String two = request.getParameter("destination");
+		Grab a = new Grab();
+		String ans = "";
+		String getOn = "";
 		try {
-			Btime.bus(abc[0].toLowerCase(), abc[1].toLowerCase());
-			System.out.println(q);
-			q = q.substring(0, q.indexOf("-")-1);
+			getOn = a.getOn(a.coor(one));
+		} catch (SAXException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ParserConfigurationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (Throwable e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String getOff = "";
+		try {
+			getOff = a.getOff(a.coor(two));
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		PrintWriter out = response.getWriter();
-		out.println(q);
+		try {
+			ans = getOn + "|" + getOff + "|" + Btime.bus(getOn, getOff);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.setContentType("text/plain");
+        response.getWriter().println(ans);
 	}
 
 }
