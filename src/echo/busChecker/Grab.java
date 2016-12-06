@@ -1,4 +1,4 @@
-package bus;
+package echo.busChecker;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -19,7 +19,7 @@ public class Grab {
 	public static void main(String[] args) throws Throwable {
 		Grab b = new Grab();
 
-		System.out.println();
+		//System.out.println();
 	}
 
 	public static int time = 0;
